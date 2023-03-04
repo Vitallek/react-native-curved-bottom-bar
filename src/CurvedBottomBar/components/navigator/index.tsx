@@ -16,6 +16,7 @@ import { getPathUp } from '../../utils/pathUp';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import type { NavigatorBottomBarProps } from './model';
 import { styles } from './styles';
+import DropShadow from 'react-native-drop-shadow';
 const { width: maxW } = Dimensions.get('window');
 
 const Tab = createBottomTabNavigator();
@@ -28,6 +29,7 @@ const BottomBarComponent: (
       type = 'DOWN',
       circlePosition = 'CENTER',
       style,
+      shadowStyle,
       width = null,
       height = 65,
       circleWidth = 50,
@@ -231,18 +233,22 @@ const BottomBarComponent: (
 
       return (
         <View style={[styles.container, style]}>
-          <Svg
-            width={maxWidth}
-            height={scale(getTabbarHeight) + (type === 'DOWN' ? 0 : scale(30))}
+          <DropShadow     
+            style={shadowStyle}
           >
-            <Path
-              fill={bgColor}
-              stroke={strokeColor}
-              strokeWidth={strokeWidth}
-              {...{ d }}
-            />
-          </Svg>
-          {_renderTabContainer(props)}
+            <Svg
+              width={maxWidth}
+              height={scale(getTabbarHeight) + (type === 'DOWN' ? 0 : scale(30))}
+            >
+              <Path
+                fill={bgColor}
+                stroke={strokeColor}
+                strokeWidth={strokeWidth}
+                {...{ d }}
+              />
+            </Svg>
+            {_renderTabContainer(props)}
+          </DropShadow>
         </View>
       );
     };

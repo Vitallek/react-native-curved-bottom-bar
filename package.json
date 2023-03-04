@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "d3-shape": "^3.2.0",
+    "react-native-drop-shadow": "^0.0.6",
     "react-native-size-scaling": "^0.5.1"
   },
   "devDependencies": {
